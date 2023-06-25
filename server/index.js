@@ -9,6 +9,7 @@ import multer from 'multer'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { register } from './controller/auth.js'
+import authRoutes from './routes/authRoutes.js'
 
 
 /* configurations */
@@ -39,6 +40,9 @@ const upload = multer({storage})
 
 // Routes with files
 app.post('/auth/register',upload.single("picture"),register)
+
+// Routes
+app.use('/auth',authRoutes)
 
 // MONGOOSE
 const port = process.env.PORT || 6000
