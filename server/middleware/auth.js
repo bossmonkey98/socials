@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-export default  verifyToken = async(req,res,next)=>{
+const  verifyToken = async(req,res,next)=>{
     try{
         let token = req.header("Authorization")
         if(!token) return res.status(403).send("Access Denied!")
@@ -19,3 +19,5 @@ export default  verifyToken = async(req,res,next)=>{
         res.status(500).json({error:err.message})
 }
 }
+
+export default verifyToken
